@@ -1,16 +1,5 @@
 <?PHP
 
-
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-//$res=file_get_contents("data.html");
-//$res=file_get_contents("http://www.omie.es/aplicaciones/resultados_mercado_moviles/ambito/ejecutaMovil.jsp?codigo=DiarioPrecMD");
-
-//$archivo=extrae($res,'<a class="eT" href="/informes_mercado/AGNO_2014/MES_03/TXT/','"><');
-
-//$archivo='http://www.omie.es/informes_mercado/AGNO_2014/MES_03/TXT/'.$archivo;
-
 $fecha = date('Y-m-d H:i:s');
 $nuevafecha = strtotime ( '+600 second' , strtotime ( $fecha ) ) ;
 $nuevafecha = date ( 'Y-m-d H:i:s' , $nuevafecha );
@@ -45,29 +34,8 @@ for ($i=1;$i<25;$i++){
 $total=trim(substr($total,0,strlen($total)-2));
 fwrite($fp,$total);
 fclose($fp);
-/*
-$hora_actual=(int)date('H');
-
-$media=number_format($media/24,2);
-
-if ((int)($media+5)<(int)$salida[$hora_actual]){
-	//rojo
-	$im='red';
-}else if ((int)($media-5)>(int)$salida[$hora_actual]){
-	//verde
-	$im='green';
-}else{
-	//ambar
-	$im='yellow';
-}
 
 
-$cadena="Precio MWh Actual:".str_replace(".",",",trim($salida[$hora_actual])."€  Media:".trim($media)."€\n".trim($im));
-
-$fp = fopen('data.txt', 'w');
-fwrite($fp, $cadena);
-fclose($fp);
-*/
 function extrae($cadena,$inicio,$fin){
     $tmp=explode($inicio,$cadena);
     $tmp2=explode($fin,$tmp[1]);
